@@ -1,7 +1,7 @@
-// App.jsx
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Profile from './components/Profile';
+import { Analytics } from "@vercel/analytics/react";
 
 const App = () => {
   const [isDark, setIsDark] = useState(true);
@@ -10,9 +10,9 @@ const App = () => {
     <div className={isDark ? 'bg-[#050505]' : 'bg-[#fcfcfc]'}>
       <Navbar isDark={isDark} setIsDark={setIsDark} />
       <Profile isDark={isDark} />
+      <Analytics />
     </div>
   );
 };
 
-// CRITICAL: This line must match your import in main.jsx
 export default App;
