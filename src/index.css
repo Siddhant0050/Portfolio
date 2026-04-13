@@ -1,10 +1,39 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap");
+
+/* Fix for smooth scrolling and touch lag */
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent; /* Removes the blue box when tapping links */
+  height: 100%;
+}
 
 body {
-  font-family: 'Inter', sans-serif;
-  -webkit-font-smoothing: antialiased;
+  /* Fixes overflow issues on mobile browsers */
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+}
+
+/* iOS Safe Areas */
+.pt-safe {
+  padding-top: env(safe-area-inset-top);
+}
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Custom Scrollbar for a more premium look */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #c5a358;
+  border-radius: 10px;
 }
 
 .font-serif-stylish {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
 }
