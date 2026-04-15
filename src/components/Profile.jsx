@@ -6,10 +6,9 @@ const Profile = ({ isDark }) => {
 
   const slides = [
     {
-      text: "Simplicity is the soul of efficiency.",
-      author: "Austin Freeman",
-      // Optimized for mobile performance with reduced width (w=800)
-      img: "https://images.unsplash.com/photo-1510519133417-2407ebdfc417?q=80&w=800",
+      text: "Make it work, make it right, make it fast.",
+      author: "Kent Beck",
+      img: "https://images.unsplash.com/photo-1550439062-609e1531270e?q=80&w=800",
     },
     {
       text: "Code is like humor. When you have to explain it, it’s bad.",
