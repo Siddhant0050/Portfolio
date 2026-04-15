@@ -2,7 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23050505'/><path d='M70 30 H30 V50 H70 V70 H30' stroke='%23c5a358' stroke-width='12' fill='none' stroke-linejoin='miter' stroke-linecap='square'/></svg>"
+    />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
@@ -12,11 +17,116 @@
       name="apple-mobile-web-app-status-bar-style"
       content="black-translucent"
     />
-    <title>Siddhant Yadav | Portfolio</title>
+
+    <title>Siddhant Yadav | Java Backend Developer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@100;300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              serif: ["Cormorant Garamond", "serif"],
+            },
+            colors: {
+              accent: "#c5a358",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+        background-color: #050505;
+      }
+      body {
+        margin: 0;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar {
+        width: 5px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #050505;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #c5a358;
+        border-radius: 10px;
+      }
+
+      /* Loader */
+      #loader {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #050505;
+        z-index: 9999;
+        transition: opacity 0.8s ease;
+      }
+      .loader-content {
+        text-align: center;
+      }
+      .loader-line {
+        width: 40px;
+        height: 1px;
+        background: #c5a358;
+        margin: 10px auto;
+        animation: scaleLine 1.5s infinite ease-in-out;
+      }
+
+      @keyframes scaleLine {
+        0%,
+        100% {
+          transform: scaleX(1);
+          opacity: 0.5;
+        }
+        50% {
+          transform: scaleX(2.5);
+          opacity: 1;
+        }
+      }
+    </style>
   </head>
-  <body>
+  <body class="font-sans antialiased overflow-x-hidden">
+    <div id="loader">
+      <div class="loader-content">
+        <span class="font-serif italic text-white text-xl tracking-tighter"
+          >Siddhant.</span
+        >
+        <div class="loader-line"></div>
+      </div>
+    </div>
+
     <div id="root"></div>
+
     <script type="module" src="/src/main.jsx"></script>
+
+    <script>
+      window.addEventListener("load", () => {
+        const loader = document.getElementById("loader");
+        setTimeout(() => {
+          loader.style.opacity = "0";
+          setTimeout(() => {
+            loader.style.display = "none";
+          }, 800);
+        }, 500);
+      });
+    </script>
   </body>
 </html>

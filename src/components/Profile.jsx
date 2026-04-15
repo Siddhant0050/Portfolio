@@ -25,61 +25,59 @@ const Profile = ({ isDark }) => {
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveQuote((prev) => (prev + 1) % slides.length);
-    }, 3000);
+    }, 4000);
     return () => clearInterval(timer);
   }, [slides.length]);
 
   const sectionTitle =
-    "text-[#c5a358] font-bold text-[11px] uppercase tracking-[0.8em] mb-20 block text-center";
+    "text-[#c5a358] font-bold text-[10px] md:text-[11px] uppercase tracking-[0.6em] md:tracking-[0.8em] mb-12 md:mb-20 block text-center";
 
   return (
     <div
-      className={`transition-colors duration-500 pt-20 ${isDark ? "bg-[#050505] text-white" : "bg-[#fcfcfc] text-black"}`}
+      className={`transition-colors duration-500 pt-10 md:pt-20 overflow-x-hidden ${
+        isDark ? "bg-[#050505] text-white" : "bg-[#fcfcfc] text-black"
+      }`}
     >
-      {/* --- HOME SECTION WITH IMAGE QUOTE SLIDER --- */}
+      {/* --- HOME SECTION --- */}
       <section
         id="home"
-        className="min-h-screen flex flex-col justify-center items-center px-6 text-center relative overflow-hidden"
+        className="min-h-[90vh] flex flex-col justify-center items-center px-6 text-center relative"
       >
-        {/* Background Decorative Text
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.02] pointer-events-none select-none">
-          <h1 className="text-[20vw] font-black">Siddhant</h1>
-        </div> */}
-
-        <h2 className="text-[#c5a358] font-semibold text-[11px] uppercase tracking-[1.2em] mb-10">
+        <h2 className="text-[#c5a358] font-semibold text-[10px] uppercase tracking-[0.8em] md:tracking-[1.2em] mb-8 md:mb-10">
           Software Engineer
         </h2>
 
-        {/* --- IMAGE & QUOTE SLIDER CONTAINER --- */}
-        <div className="relative w-full max-w-4xl h-[300px] md:h-[400px] flex items-center justify-center overflow-hidden rounded-sm">
+        <div className="relative w-full max-w-4xl h-[350px] md:h-[450px] flex items-center justify-center overflow-hidden rounded-lg shadow-2xl">
           {slides.map((slide, index) => (
             <div
               key={index}
-              className={`absolute inset-0 transition-all duration-[1500ms] ease-in-out flex flex-col items-center justify-center ${
+              className={`absolute inset-0 transition-all duration-[1500ms] ease-in-out flex flex-col items-center justify-center transform-gpu ${
                 index === activeQuote
                   ? "opacity-100 scale-100"
-                  : "opacity-0 scale-110"
+                  : "opacity-0 scale-105"
               }`}
             >
-              {/* Slide Image */}
               <div className="absolute inset-0 z-0">
                 <img
                   src={slide.img}
                   alt="background"
-                  className="w-full h-full object-cover grayscale opacity-20"
+                  className="w-full h-full object-cover grayscale opacity-30"
                 />
                 <div
-                  className={`absolute inset-0 ${isDark ? "bg-gradient-to-b from-[#050505] via-transparent to-[#050505]" : "bg-gradient-to-b from-[#fcfcfc] via-transparent to-[#fcfcfc]"}`}
+                  className={`absolute inset-0 ${
+                    isDark
+                      ? "bg-gradient-to-b from-[#050505] via-transparent to-[#050505]"
+                      : "bg-gradient-to-b from-[#fcfcfc] via-transparent to-[#fcfcfc]"
+                  }`}
                 ></div>
               </div>
 
-              {/* Slide Content */}
-              <div className="z-10 px-8">
-                <p className="text-xl md:text-3xl font-serif-stylish italic tracking-wide leading-relaxed">
+              <div className="z-10 px-6 md:px-12">
+                <p className="text-xl md:text-4xl font-serif-stylish italic tracking-wide leading-tight md:leading-relaxed">
                   "{slide.text}"
                 </p>
-                <div className="w-12 h-px bg-[#c5a358] mx-auto my-6"></div>
-                <span className="text-[#c5a358] text-[10px] font-bold uppercase tracking-[0.6em]">
+                <div className="w-10 h-px bg-[#c5a358] mx-auto my-6 md:my-8 opacity-60"></div>
+                <span className="text-[#c5a358] text-[9px] md:text-[10px] font-bold uppercase tracking-[0.4em] md:tracking-[0.6em]">
                   — {slide.author}
                 </span>
               </div>
@@ -87,71 +85,111 @@ const Profile = ({ isDark }) => {
           ))}
         </div>
 
-        <p className="text-[12px] tracking-[0.6em] uppercase opacity-40 font-medium mt-16">
+        <p className="text-[10px] md:text-[12px] tracking-[0.4em] md:tracking-[0.6em] uppercase opacity-40 font-medium mt-12 md:mt-16">
           Siddhant Sunil Yadav
         </p>
       </section>
 
       {/* --- EXPERIENCE SECTION --- */}
-      <section id="experience" className="py-48 max-w-5xl mx-auto px-8">
+      <section
+        id="experience"
+        className="py-24 md:py-48 max-w-5xl mx-auto px-6 md:px-8"
+      >
         <span className={sectionTitle}>Professional Tenure</span>
-        <div className="space-y-20">
-          <div
-            className={`border-l-2 ${isDark ? "border-white/5" : "border-black/5"} pl-12 relative group`}
-          >
-            <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#c5a358] shadow-[0_0_20px_rgba(197,163,88,0.3)]"></div>
-            <span className="text-[10px] font-bold opacity-40 uppercase tracking-[0.4em]">
-              2024 — Present
-            </span>
-            <h4 className="text-4xl font-serif-stylish italic mt-4 group-hover:text-[#c5a358] transition-colors">
-              Java Developer Intern
-            </h4>
-            <p className="text-[#c5a358] text-[12px] font-bold tracking-[0.2em] uppercase mt-2">
-              Utterwise Technologies
-            </p>
-            <p
-              className={`text-base font-light mt-8 max-w-2xl leading-relaxed ${isDark ? "text-slate-400" : "text-slate-600"}`}
+        <div className="space-y-16 md:y-24">
+          {[
+            {
+              date: "Jun 2024 — Nov 2025",
+              role: "Java Developer",
+              company: "Tech Mahindra",
+              points: [
+                "Developed scalable backend applications using Java and Spring Boot.",
+                "Designed secure REST APIs with JWT-based authentication.",
+                "Optimized SQL queries in PostgreSQL for better performance.",
+                "Applied multithreading for robust, concurrent applications.",
+              ],
+            },
+            {
+              date: "Jan 2024 — Jun 2024",
+              role: "Java Developer Intern",
+              company: "Utterwise Technologies",
+              points: [
+                "Built REST APIs and integrated backend with PostgreSQL.",
+                "Handled debugging and exception handling for stability.",
+                "Verified API logic using Postman testing.",
+              ],
+            },
+            {
+              date: "May 2023 — Aug 2023",
+              role: "Web Developer Intern",
+              company: "Intellect Logic",
+              desc: "Developed responsive UI using HTML, CSS, and JS, integrating frontend components with backend APIs.",
+            },
+          ].map((exp, idx) => (
+            <div
+              key={idx}
+              className={`border-l ${isDark ? "border-white/10" : "border-black/10"} pl-8 md:pl-12 relative group`}
             >
-              Architecting scalable RESTful ecosystems and optimizing Spring
-              Boot backend performance. Focusing on high-concurrency data
-              integrity and enterprise security.
-            </p>
-          </div>
+              <div className="absolute -left-[5px] top-0 w-[9px] h-[9px] rounded-full bg-[#c5a358] shadow-[0_0_15px_rgba(197,163,88,0.5)]"></div>
+              <span className="text-[9px] font-bold opacity-40 uppercase tracking-[0.3em]">
+                {exp.date}
+              </span>
+              <h4 className="text-2xl md:text-4xl font-serif-stylish italic mt-3 group-hover:text-[#c5a358] transition-colors">
+                {exp.role}
+              </h4>
+              <p className="text-[#c5a358] text-[11px] font-bold tracking-[0.2em] uppercase mt-1">
+                {exp.company}
+              </p>
+              {exp.points ? (
+                <ul
+                  className={`text-sm md:text-base font-light mt-6 space-y-2 md:space-y-3 leading-relaxed opacity-80`}
+                >
+                  {exp.points.map((p, i) => (
+                    <li key={i}>• {p}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-sm md:text-base font-light mt-6 opacity-80 leading-relaxed">
+                  {exp.desc}
+                </p>
+              )}
+            </div>
+          ))}
         </div>
       </section>
 
       {/* --- EDUCATION SECTION --- */}
       <section
         id="education"
-        className={`py-48 px-8 ${isDark ? "bg-[#080808]" : "bg-[#f9f9f9]"} border-y ${isDark ? "border-white/[0.03]" : "border-black/[0.03]"}`}
+        className={`py-24 md:py-48 px-6 md:px-8 ${isDark ? "bg-[#080808]" : "bg-[#f9f9f9]"} border-y ${isDark ? "border-white/[0.03]" : "border-black/[0.03]"}`}
       >
         <div className="max-w-5xl mx-auto">
           <span className={sectionTitle}>Academic Foundation</span>
-          <div className="grid md:grid-cols-2 gap-20">
-            <div className="space-y-6">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-20">
+            <div className="space-y-4">
               <Icons.GraduationCap
-                className="text-[#c5a358] opacity-40"
-                size={32}
+                className="text-[#c5a358] opacity-50"
+                size={28}
               />
-              <span className="text-[#c5a358] text-[11px] font-bold tracking-[0.4em] uppercase">
+              <span className="text-[#c5a358] text-[10px] font-bold tracking-[0.3em] uppercase">
                 2022 — 2024
               </span>
-              <h4 className="text-4xl font-serif-stylish italic leading-tight">
+              <h4 className="text-2xl md:text-3xl font-serif-stylish italic">
                 Master of MCA
               </h4>
-              <p className="text-[11px] font-bold opacity-30 uppercase tracking-[0.2em]">
-                MIT World Peace University, Pune
+              <p className="text-[10px] font-bold opacity-30 uppercase tracking-widest">
+                MIT WPU, Pune
               </p>
             </div>
-            <div className="space-y-6">
-              <Icons.Award className="text-[#c5a358] opacity-40" size={32} />
-              <span className="text-[#c5a358] text-[11px] font-bold tracking-[0.4em] uppercase">
+            <div className="space-y-4">
+              <Icons.Award className="text-[#c5a358] opacity-50" size={28} />
+              <span className="text-[#c5a358] text-[10px] font-bold tracking-[0.3em] uppercase">
                 2019 — 2022
               </span>
-              <h4 className="text-4xl font-serif-stylish italic leading-tight">
+              <h4 className="text-2xl md:text-3xl font-serif-stylish italic">
                 Bachelor of BCA
               </h4>
-              <p className="text-[11px] font-bold opacity-30 uppercase tracking-[0.2em]">
+              <p className="text-[10px] font-bold opacity-30 uppercase tracking-widest">
                 DCPE, Amravati
               </p>
             </div>
@@ -160,23 +198,34 @@ const Profile = ({ isDark }) => {
       </section>
 
       {/* --- SKILLS SECTION --- */}
-      <section id="skills" className="py-48 max-w-6xl mx-auto px-8">
+      <section
+        id="skills"
+        className="py-24 md:py-48 max-w-6xl mx-auto px-6 md:px-8"
+      >
         <span className={sectionTitle}>Technical Arsenal</span>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-[#c5a358]/10 border border-[#c5a358]/10 overflow-hidden">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#c5a358]/20 border border-[#c5a358]/10">
           {[
-            { cat: "Backend", tech: "Java, Spring Boot" },
-            { cat: "Frontend", tech: "React.js, Tailwind" },
-            { cat: "Database", tech: "PostgreSQL, MySQL" },
-            { cat: "Tools", tech: "Git, Docker, AWS" },
+            { cat: "Languages", tech: "Java, JavaScript, SQL" },
+            {
+              cat: "Backend",
+              tech: "Spring Boot, REST APIs, JWT, Microservices",
+            },
+            {
+              cat: "Core Java",
+              tech: "OOP, Collections, Streams, Multithreading",
+            },
+            { cat: "Frontend", tech: "React.js, HTML, CSS, Tailwind" },
+            { cat: "Database", tech: "PostgreSQL, SQL, Indexing" },
+            { cat: "Tools", tech: "Git, Maven, Postman, VS Code" },
           ].map((s, i) => (
             <div
               key={i}
-              className={`p-16 transition-all duration-500 ${isDark ? "bg-[#050505] hover:bg-[#0a0a0a]" : "bg-white hover:bg-slate-50"} text-center group`}
+              className={`p-10 md:p-16 transition-all ${isDark ? "bg-[#050505] hover:bg-[#0a0a0a]" : "bg-white hover:bg-slate-50"} text-center`}
             >
-              <h5 className="text-[10px] font-bold text-[#c5a358] uppercase tracking-[0.4em] mb-4">
+              <h5 className="text-[9px] font-bold text-[#c5a358] uppercase tracking-[0.3em] mb-4">
                 {s.cat}
               </h5>
-              <p className="text-sm font-medium opacity-60 tracking-wide">
+              <p className="text-xs md:text-sm font-medium opacity-70">
                 {s.tech}
               </p>
             </div>
@@ -187,45 +236,41 @@ const Profile = ({ isDark }) => {
       {/* --- PROJECTS SECTION --- */}
       <section
         id="projects"
-        className={`py-48 px-8 ${isDark ? "bg-[#080808]" : "bg-[#f9f9f9]"} border-y ${isDark ? "border-white/[0.03]" : "border-black/[0.03]"}`}
+        className={`py-24 md:py-48 px-6 md:px-8 ${isDark ? "bg-[#080808]" : "bg-[#f9f9f9]"}`}
       >
         <div className="max-w-6xl mx-auto">
           <span className={sectionTitle}>Selected Works</span>
-          <div className="grid md:grid-cols-2 gap-px bg-[#c5a358]/20 border border-[#c5a358]/20 overflow-hidden">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-px bg-[#c5a358]/20 border border-[#c5a358]/10 overflow-hidden">
             {[
               {
-                title: "AmitIT Academy",
+                title: "Amit IT Academy",
                 img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200",
-                desc: "Enterprise Student Management ecosystem with high-performance Java backend.",
+                desc: "Full-stack platform with React & Spring Boot. Features role-based access and student enrollment modules.",
               },
               {
-                title: "Internal Systems",
+                title: "SSY Academics",
                 img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200",
-                desc: "Integrated employee resource tracking focused on data security and real-time visualization.",
+                desc: "High-performance academic system focusing on multithreaded data handling and secure API design.",
               },
             ].map((proj, i) => (
               <div
                 key={i}
-                className={`group p-12 md:p-16 transition-all duration-700 ${isDark ? "bg-[#050505]" : "bg-white"}`}
+                className={`group p-8 md:p-16 transition-all ${isDark ? "bg-[#050505]" : "bg-white"}`}
               >
-                <div className="aspect-[16/10] overflow-hidden mb-12">
+                <div className="aspect-[16/10] overflow-hidden mb-8 md:mb-12 rounded-sm">
                   <img
                     src={proj.img}
                     alt={proj.title}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1.2s]"
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                   />
                 </div>
-                <div className="space-y-6">
-                  <h4 className="text-4xl font-serif-stylish italic">
-                    {proj.title}
-                  </h4>
-                  <p
-                    className={`text-sm font-light leading-relaxed max-w-sm ${isDark ? "text-slate-400" : "text-slate-500"}`}
-                  >
-                    {proj.desc}
-                  </p>
-                  <div className="w-12 h-px bg-[#c5a358] opacity-40 group-hover:w-full transition-all duration-700"></div>
-                </div>
+                <h4 className="text-2xl md:text-4xl font-serif-stylish italic mb-4">
+                  {proj.title}
+                </h4>
+                <p className="text-xs md:text-sm font-light leading-relaxed opacity-60 mb-6">
+                  {proj.desc}
+                </p>
+                <div className="w-10 h-px bg-[#c5a358] opacity-30 group-hover:w-full transition-all duration-700"></div>
               </div>
             ))}
           </div>
@@ -233,50 +278,34 @@ const Profile = ({ isDark }) => {
       </section>
 
       {/* --- CONTACT SECTION --- */}
-      <section
-        id="contact"
-        className="py-32 text-center px-8 relative overflow-hidden"
-      >
+      <section id="contact" className="py-24 md:py-32 text-center px-6">
         <span className={sectionTitle}>Inquiry</span>
-
-        {/* Scaled down heading for better balance */}
-        <h3 className="text-4xl md:text-6xl font-serif-stylish italic mb-12 leading-tight">
-          Let's Build the <br />
+        <h3 className="text-3xl md:text-6xl font-serif-stylish italic mb-12 md:mb-16 leading-tight">
+          Let's Build the <br className="hidden md:block" />
           <span className="text-[#c5a358]">Next Era.</span>
         </h3>
 
-        <div className="flex flex-col md:flex-row justify-center gap-12 md:gap-24 items-center">
-          {/* Email Block */}
+        <div className="flex flex-col md:flex-row justify-center gap-10 md:gap-20 items-center">
           <a href="mailto:yadavsiddhant10@gmail.com" className="group">
-            <span className="text-[9px] font-bold tracking-[0.4em] uppercase opacity-40 group-hover:text-[#c5a358] group-hover:opacity-100 transition-all block mb-2">
+            <span className="text-[9px] font-bold tracking-[0.3em] uppercase opacity-40 block mb-2">
               Email Channel
             </span>
-            <span className="text-lg md:text-xl font-medium tracking-tight border-b border-[#c5a358]/10 group-hover:border-[#c5a358] transition-all pb-1">
+            <span className="text-base md:text-xl font-medium border-b border-[#c5a358]/20 group-hover:border-[#c5a358] transition-all">
               yadavsiddhant10@gmail.com
             </span>
           </a>
-
-          {/* Minimalist Vertical Divider */}
-          <div
-            className={`hidden md:block w-px h-10 ${isDark ? "bg-white/10" : "bg-black/10"}`}
-          ></div>
-
-          {/* Refined Mobile/Connect Block */}
           <a
             href="https://wa.me/919359562815"
             target="_blank"
             rel="noreferrer"
             className="group"
           >
-            <span className="text-[9px] font-bold tracking-[0.4em] uppercase opacity-40 group-hover:text-[#c5a358] group-hover:opacity-100 transition-all block mb-2">
+            <span className="text-[9px] font-bold tracking-[0.3em] uppercase opacity-40 block mb-2">
               Connection
             </span>
-            <div className="flex items-center gap-2 justify-center border-b border-[#c5a358]/10 group-hover:border-[#c5a358] transition-all pb-1">
-              <Icons.MessageSquare
-                size={14}
-                className="text-[#c5a358] opacity-60"
-              />
-              <span className="text-lg md:text-xl font-medium tracking-tight">
+            <div className="flex items-center gap-2 border-b border-[#c5a358]/20 group-hover:border-[#c5a358] transition-all">
+              <Icons.MessageSquare size={14} className="text-[#c5a358]" />
+              <span className="text-base md:text-xl font-medium">
                 +91 9359562815
               </span>
             </div>
@@ -285,9 +314,9 @@ const Profile = ({ isDark }) => {
       </section>
 
       <footer
-        className={`py-20 border-t ${isDark ? "border-white/5" : "border-black/5"} text-center`}
+        className={`py-12 border-t ${isDark ? "border-white/5" : "border-black/5"} text-center`}
       >
-        <p className="text-[10px] font-bold tracking-[0.6em] opacity-20 uppercase">
+        <p className="text-[9px] font-bold tracking-[0.4em] opacity-30 uppercase px-6 leading-loose">
           © 2026 Siddhant Sunil Yadav • Engineered for Performance
         </p>
       </footer>
