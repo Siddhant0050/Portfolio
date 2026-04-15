@@ -8,17 +8,18 @@ const Profile = ({ isDark }) => {
     {
       text: "Simplicity is the soul of efficiency.",
       author: "Austin Freeman",
-      img: "https://images.unsplash.com/photo-1510519133417-2407ebdfc417?q=80&w=1200",
+      // Optimized for mobile performance with reduced width (w=800)
+      img: "https://images.unsplash.com/photo-1510519133417-2407ebdfc417?q=80&w=800",
     },
     {
       text: "Code is like humor. When you have to explain it, it’s bad.",
       author: "Cory House",
-      img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200",
+      img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800",
     },
     {
       text: "Design is how it works.",
       author: "Steve Jobs",
-      img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200",
+      img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800",
     },
   ];
 
@@ -61,7 +62,9 @@ const Profile = ({ isDark }) => {
                 <img
                   src={slide.img}
                   alt="background"
-                  className="w-full h-full object-cover grayscale opacity-30"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover grayscale opacity-30 transition-opacity duration-700"
                 />
                 <div
                   className={`absolute inset-0 ${
@@ -178,7 +181,7 @@ const Profile = ({ isDark }) => {
                 Master of MCA
               </h4>
               <p className="text-[10px] font-bold opacity-30 uppercase tracking-widest">
-                MIT WPU, Pune
+                MIT World Peace University, Pune
               </p>
             </div>
             <div className="space-y-4">
@@ -190,7 +193,7 @@ const Profile = ({ isDark }) => {
                 Bachelor of BCA
               </h4>
               <p className="text-[10px] font-bold opacity-30 uppercase tracking-widest">
-                DCPE, Amravati
+                Degree College of Physical Education, HVPM, Amravati
               </p>
             </div>
           </div>
